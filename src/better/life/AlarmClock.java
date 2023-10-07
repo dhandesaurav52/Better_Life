@@ -63,7 +63,7 @@ public class AlarmClock extends JFrame implements ActionListener {
         JLabel emergencyContact1Label = new JLabel("Emergency Contact:");
         emergencyContact1TextField = new JTextField(25);
         emergencyContact1TextField.setText("+917219789870");
-        messageTextField.setText("Take your pills by time.");
+        messageTextField.setText("Take your pills by time!");
         addButton = new JButton("Add");
         addButton.addActionListener(this);
         removeButton = new JButton("Remove");
