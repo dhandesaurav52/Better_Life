@@ -83,6 +83,7 @@ public class AlarmClock extends JFrame implements ActionListener {
         alarmPanel.add(addButton);
         alarmPanel.add(removeButton);
         alarmListModel = new DefaultListModel<>();
+
         alarmList = new JList<>(alarmListModel);
         alarmList.setBorder(new MatteBorder(0, 5, 0, 5, (Color) new Color(0, 0, 0)));
         JScrollPane scrollPane = new JScrollPane(alarmList);
@@ -137,9 +138,10 @@ public class AlarmClock extends JFrame implements ActionListener {
     //method to update the alarm list
     private void updateAlarmList() {
         alarmListModel.clear();
-        for (Alarm alarm : alarms) {
+        for(int i=0;i<alarms.size();i++){
+            Alarm alarm=alarms.get(i);
             SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a");
-            String alarmTime = dateFormat.format(alarm.alarm.getTime())+" : "+alarm.message;
+            String alarmTime = dateFormat.format(alarm.calendar.getTime())+" : "+alarm.message;
             alarmListModel.addElement(alarmTime);
         }
     }
@@ -148,9 +150,9 @@ public class AlarmClock extends JFrame implements ActionListener {
         try{
             ArrayList<Alarm> temp = new ArrayList<>();
             temp.addAll(alarms);
-            for (Alarm alarm : temp) {
-
-                if (alarm.alarm.getTimeInMillis() <= System.currentTimeMillis()) {
+            for (int i=0;i< temp.size();i++) {
+               Alarm alarm =temp.get(i);
+                if (alarm.calendar.getTimeInMillis() <= System.currentTimeMillis()) {
                     ringAlarm(alarm);
                     
                     alarms.remove(alarm);

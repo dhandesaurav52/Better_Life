@@ -248,9 +248,13 @@ public class Signup extends JFrame implements ActionListener{
                     JOptionPane.showMessageDialog(null, "Please enter correct NAME and PASSWORD");
                 }else{
                     DBHelper dbHelper =new DBHelper();
-//                    String query = ""+formno+"','"+name+"','"+fathername+"','"+dob+"','"+gender+"','"+email+"','"+marital+"','"+address+"','"+city+"','"+state+"','"+pincode+"','"+age+"','"+password+"')";
-                        StringBuilder queryBuilder = new StringBuilder("insert into signup(formno, name, fathername,dob, gender, email, marital, address, city, state, pincode, age, password) values('");
-                    queryBuilder.append(formno)
+
+
+//                  String query = ""+formno+"','"+name+"','"+fathername+"','"+dob+"','"+gender+"','"+email+"','"+marital+"','"+address+"','"+city+"','"+state+"','"+pincode+"','"+age+"','"+password+"')";
+                    StringBuilder queryBuilder = new StringBuilder();
+
+                    queryBuilder.append("insert into signup(formno, name, fathername,dob, gender, email, marital, address, city, state, pincode, age, password) values('")
+                            .append(formno)
                             .append("','")
                             .append(name)
                             .append("','")
